@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Молоток",
+    "description": "ударный ручной инструмент, применяемый для забивания гвоздей",
+    "article": "G2H1065",
+    "price": 2256,
+    "pic": "https://avatars.mds.yandex.net/i?id=2a00000179e11c9604d12f82530c5f03bae1-3560974-images-thumbs&n=13"
+  },
+  {
+    "title": "Гвозди",
+    "description": " крепёжное изделие, метиз в виде стержня с металлической головкой и острым концом",
+    "article": "G2H1066",
+    "price": 1200,
+    "pic": "https://borisov-praktik.by/upload/iblock/70c/70c0cfb89822d33c8a12ebc0825ceed3.jpg"
+  },
+  {
+    "title": "Брус",
+    "description": "доска с неопиленными или частично опиленными кромками",
+    "article": "G2H1067",
+    "price": 6500,
+    "pic": "https://sun9-23.userapi.com/impf/c849424/v849424775/1cc59/My4NeyEp-Fo.jpg?size=448x224&quality=96&sign=347f5f1927304debc48fa80e84bb7105&c_uniq_tag=QwKujMjpv5xZyxtZnrS4Uw-b7U4Q-Demh4SrqevKQ8w&type=album"
+  }
+]
