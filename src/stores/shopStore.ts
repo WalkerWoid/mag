@@ -33,7 +33,7 @@ export const useShopStore = defineStore('shopStore', () => {
 
   async function getItems() {
     try {
-      const rawItems = await fetch('/items.json')
+      const rawItems = await fetch(`${import.meta.env.BASE_URL}items.json`)
 
       if (rawItems) {
         items.value = await rawItems.json()
@@ -44,7 +44,7 @@ export const useShopStore = defineStore('shopStore', () => {
   }
   async function getCartItems() {
     try {
-      const rawItems = await fetch('/cartItems.json')
+      const rawItems = await fetch(`${import.meta.env.BASE_URL}cartItems.json`)
 
       if (rawItems) {
         cartItems.value = await rawItems.json()

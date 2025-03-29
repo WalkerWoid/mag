@@ -2,6 +2,9 @@
 import {defineComponent} from "vue";
 import type {PropType} from "vue";
 import type {CartItemInterface} from "@/interfaces/ItemInterface.ts";
+import type {ItemInterface} from "@/interfaces/ItemInterface.ts";
+
+import {useIsCartItem} from "@/composables/useIsCartItem.ts";
 
 
 export default defineComponent({
@@ -10,15 +13,17 @@ export default defineComponent({
   },
   props: {
     item: {
-      type: Object as PropType<CartItemInterface>,
+      type: Object as PropType<CartItemInterface | ItemInterface>,
       required: true
     }
   },
   setup(props, {emit}) {
     const addItem = () => {
-      props.item.count += 1
+      if (useIsCartItem(props.item)) props.item.count += 1
     }
     const decreaseItem = () => {
+      if (!useIsCartItem(props.item)) return
+
       if (props.item.count -1 === 0) {
         emit('deleteItem', props.item.article)
       } else {
@@ -26,7 +31,7 @@ export default defineComponent({
       }
     }
 
-    return {addItem, decreaseItem}
+    return {addItem, decreaseItem, useIsCartItem}
   },
 })
 </script>
@@ -43,7 +48,7 @@ export default defineComponent({
       <p class="item__article">Артикул: {{item.article}}</p>
     </div>
 
-    <p class="item__actions" v-if="item.count">
+    <p class="item__actions" v-if="useIsCartItem(item)">
       <span class="action action--decrease" @click="decreaseItem">-</span>
       <span class="action item__count">{{item.count}}</span>
       <span class="action action--increase" @click="addItem">+</span>
@@ -51,7 +56,7 @@ export default defineComponent({
 
     <p class="item__price">{{item.price.toLocaleString('ru-RU')}} &#8381;</p>
 
-    <span class="item__delete" @click="$emit('deleteItem', item.article)" v-if="item.count">
+    <span class="item__delete" @click="$emit('deleteItem', item.article)" v-if="useIsCartItem(item)">
       <img src="@/assets/images/cross.svg" alt="close-icon">
     </span>
   </li>
